@@ -12,14 +12,16 @@
 # Description:
 ### END INIT INFO
 set -x #echo on
-
 lockfirstinstall="/etc/launcher_app/lock_firstinstall.launcher_app";
 
-if test ! -f $lockfirstinstall; then
-  #si on ne la jamais fais on update et upgrade le systeme et on iunstall git
-  ln -sf $basename  '/etc/init.d/launcher_app.sh';
-  apt-get update && apt-get dist-upgrade -y && apt-get install git -y && \
-  touch $lockfirstinstall;
-fi
 
-export NGINX_PORT_HTTP=80;
+
+install_first_time ()
+{
+    ln -sf $basename  '/etc/init.d/launcher_app.sh';
+    apt-get update && apt-get dist-upgrade -y && apt-get install git -y && \
+    touch $lockfirstinstall;
+}
+
+
+if test ! -f $lockfirstinstall; then install_first_time; fi
