@@ -33,8 +33,9 @@ compare_version_app(){
   if [ -d "$app_path" ];
   then
     cd $app_path;
-    BRANCH_local=$(git rev-parse master);
-    BRANCH_origin=$(git rev-parse origin/master);
+    git fetch
+    BRANCH_local=$(git rev-parse HEAD);
+    BRANCH_origin=$(git rev-parse master@{upstream});
     if [ "$BRANCH_local" == "$BRANCH_origin" ];
     then
       etat_application="0"
@@ -55,7 +56,9 @@ install_app (){
   git clone $app_depot_http $app_path
 }
 update_app(){
-echo ""
+  echo "Update de le l'application"
+  cd $app_path;
+  git pull $app_path
 }
 
 case $1 in
