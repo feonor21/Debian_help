@@ -12,12 +12,11 @@
 # Description:
 ### END INIT INFO
 
-#
 lock_first_install="/etc/launcher_app/lock_firstinstall.launcher_app";
 etat_application=0; #0=pas modifier,needupdate=update dispo,needinstall=application pas installer
 app_path="/etc/app_service/"
 app_depot_http="https://github.com/feonor21/laucher_debian9.git"
-set -x #echo on
+
 
 install_first_time (){
     echo "Installation initiale"
@@ -48,7 +47,6 @@ compare_version_app(){
     etat_application="needinstall"
     echo "--> need install"
   fi
-
 }
 install_app (){
   echo "Installation de le l'application"
@@ -58,7 +56,7 @@ install_app (){
 update_app(){
   echo "Update de le l'application"
   cd $app_path;
-  git pull $app_path
+  git pull
 }
 
 case $1 in
