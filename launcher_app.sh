@@ -26,38 +26,33 @@ install_first_time (){
     apt-get update && apt-get dist-upgrade -y && apt-get install git -y && \
     touch $lock_first_install;
     echo "--> Update , distupgrade , install git et creation du lockfirstinstall"
-    echo "->Installation initiale Terminer"
 }
 
 compare_version_app(){
   echo "Comparaison de l'application par rapport au dépot"
-  if [ -d "$app_path" ]; then
+  if [ -d "$app_path" ];
+  then
     cd $app_path;
-    BRANCH=$(git rev-parse --abbrev-ref HEAD)
-    if [ "$BRANCH" = "" ]
+    BRANCH_local=$(git rev-parse master);
+    BRANCH_origin=$(git rev-parse origin/master);
+    if [ "$BRANCH_local" == "$BRANCH_origin" ];
     then
-      etat_application="needinstall"
-      echo "need install"
+      etat_application="0"
+      echo "--> Update to date"
     else
-      if [ "$BRANCH" != "master" ]
-      then
-        etat_application="needupdate"
-        echo "need update"
-      else
-        etat_application="0"
-        echo "Update to date"
-      fi
+      etat_application="needupdate"
+      echo "--> need update"
     fi
   else
     etat_application="needinstall"
-    echo "need install"
+    echo "--> need install"
   fi
+
 }
 install_app (){
   echo "Installation de le l'application"
   mkdir -p $app_path
-  cd $app_path;
-  git clone $app_depot_http
+  git clone $app_depot_http $app_path
 }
 update_app(){
 echo ""
