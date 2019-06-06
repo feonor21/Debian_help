@@ -12,19 +12,26 @@
 # Description:
 ### END INIT INFO
 
+script_name=$0
+script_full_path=$(dirname "$0")
+
 lock_first_install="/etc/launcher_app/lock_firstinstall.launcher_app";
 etat_application=0; #0=pas modifier,needupdate=update dispo,needinstall=application pas installer
+
 app_path="/etc/app_service/"
 app_depot_http="https://github.com/feonor21/laucher_debian9.git"
 
+#rm $lock_first_install;
+#rm -R $app_path
 
 install_first_time (){
     echo "Installation initiale"
-    ln -sf $basename  '/etc/init.d/launcher_app.sh';
+    ln -sf $0  '/etc/init.d/launcher_app.sh';
     echo "--> creation du lien symbolic dans le init.d"
     apt-get update && apt-get dist-upgrade -y && apt-get install git -y && \
     touch $lock_first_install;
     echo "--> Update , distupgrade , install git et creation du lockfirstinstall"
+
 }
 
 compare_version_app(){
@@ -59,6 +66,7 @@ update_app(){
   git pull
 }
 
+
 case $1 in
   start)
     if test ! -f $lock_first_install; then install_first_time; fi
@@ -71,6 +79,7 @@ case $1 in
         update_app
     	;;
       esac
+
 	;;
   stop)
 	;;
