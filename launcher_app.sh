@@ -12,7 +12,7 @@
 # Description:
 ### END INIT INFO
 
-
+#
 lock_first_install="/etc/launcher_app/lock_firstinstall.launcher_app";
 etat_application=0; #0=pas modifier,needupdate=update dispo,needinstall=application pas installer
 app_path="/etc/app_service/"
