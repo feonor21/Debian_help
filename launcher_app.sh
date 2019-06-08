@@ -79,9 +79,13 @@ case $1 in
     case $etat_application in
       needinstall)
         install_app
+        chmod +x $app_path"/install.sh"
+        bash $app_path"/install.sh"
       ;;
       needupdate)
         update_app
+        chmod +x $app_path"/install.sh"
+        bash $app_path"/install.sh"
     	;;
       esac
 
