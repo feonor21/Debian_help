@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ### BEGIN INIT INFO
 # Provides:           launcher_app
 # Required-Start:     $syslog $remote_fs
