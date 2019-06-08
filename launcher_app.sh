@@ -11,6 +11,17 @@
 # Description:
 ### END INIT INFO
 
+# test si fichier de conf exist
+if test -f ./server_main.conf 
+then
+  # Chargement du fichier de conf
+  . ./server_main.conf
+
+  echo $password
+else
+  echo "pas de fichier de conf trouver"
+fi
+
 script_name=$0
 script_full_path=$(dirname "$0")
 
