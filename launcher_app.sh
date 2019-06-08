@@ -11,19 +11,17 @@
 # Description:
 ### END INIT INFO
 
+script_name=$0
+script_full_path=$(dirname "$0")
+
 # test si fichier de conf exist
-if test -f ./server_main.conf 
+if test -f $script_full_path"/server_main.conf"
 then
   # Chargement du fichier de conf
-  . ./server_main.conf
-
-  echo $password
+  . $script_full_path"/server_main.conf"
 else
   echo "pas de fichier de conf trouver"
 fi
-
-script_name=$0
-script_full_path=$(dirname "$0")
 
 lock_first_install=$script_full_path"/lock_firstinstall.launcher_app";
 etat_application=0; #0=pas modifier,needupdate=update dispo,needinstall=application pas installer
@@ -31,8 +29,6 @@ etat_application=0; #0=pas modifier,needupdate=update dispo,needinstall=applicat
 app_path=$2
 app_depot_http=$3
 
-#rm $lock_first_install;
-#rm -R $app_path
 
 install_first_time (){
     echo "Installation initiale"
