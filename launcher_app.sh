@@ -25,11 +25,11 @@ fi
 script_name=$0
 script_full_path=$(dirname "$0")
 
-lock_first_install="/etc/launcher_app/lock_firstinstall.launcher_app";
+lock_first_install=$script_full_path"/lock_firstinstall.launcher_app";
 etat_application=0; #0=pas modifier,needupdate=update dispo,needinstall=application pas installer
 
-app_path="/etc/app_service/"
-app_depot_http="https://github.com/feonor21/laucher_debian9.git"
+app_path=$2
+app_depot_http=$3
 
 #rm $lock_first_install;
 #rm -R $app_path
@@ -41,7 +41,6 @@ install_first_time (){
     apt-get update && apt-get dist-upgrade -y && apt-get install git -y && \
     touch $lock_first_install;
     echo "--> Update , distupgrade , install git et creation du lockfirstinstall"
-
 }
 
 compare_version_app(){
