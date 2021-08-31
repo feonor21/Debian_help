@@ -1,4 +1,4 @@
-#!/bin/bash -xv
+#!/bin/bash
 ### BEGIN INIT INFO
 # Provides:           install_system.sh
 # Required-Start:     $syslog $remote_fs
@@ -24,7 +24,7 @@ install_zsh (){
     read -p "Do you wish to install zsh?(y/n)" yn
     case $yn in
         [Yy]*) echo "Install zsh proccessing"
-        apt install zsh zplug
+        apt -y install zsh zplug
         chsh -s /bin/zsh
         ;;
         *) echo "Please answer yes(y) or no(other^^).";;
@@ -47,10 +47,10 @@ install_docker (){
     case $yn in
         [Yy]*)
         echo "Uninstall old versions of Docker"
-        apt-get remove docker docker-engine docker.io containerd runc
+        apt-get -y remove docker docker-engine docker.io containerd runc
 
         echo "Set up the repository"
-        apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+        apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
         curl -L https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
         echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | \
             tee /etc/apt/sources.list.d/docker.list > /dev/null
@@ -58,12 +58,12 @@ install_docker (){
 
         echo "Install Docker Engine"
         apt-get update
-        apt-get install docker-ce docker-ce-cli containerd.io
+        apt-get -y install docker-ce docker-ce-cli containerd.io
 
 
         apt-cache madison docker-ce
         read -p "Choose Your Version(second column)" $version
-        apt-get install docker-ce=$version docker-ce-cli=$version containerd.io
+        apt-get -y install docker-ce=$version docker-ce-cli=$version containerd.io
         
         install_dockercompose
         ;;

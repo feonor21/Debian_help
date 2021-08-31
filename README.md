@@ -4,4 +4,4 @@ it's long :( so I prefer to make a script that will do 25000 times the same acti
 
 
 install_system.sh allows to install my debian setup faster
-curl -fsSLV https://raw.githubusercontent.com/feonor21/Debian_help/master/install_system.sh -o ./install_system.sh && chmod +x install_system.sh && ./install_system.sh && rm install_system.sh
+curl -fsSL https://raw.githubusercontent.com/feonor21/Debian_help/master/install_system.sh -o ./install_system.sh && chmod +x install_system.sh && ./install_system.sh && rm install_system.sh
