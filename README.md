@@ -1,3 +1,6 @@
-# laucher_debian9
 
-bash /etc/launcher_app/launcher_app.sh start /etc/app_service/ https://github.com/feonor21/laucher_debian9.git
+like any developer, install 25000 VM, reinstall, reconfigure...
+it's long :( so I prefer to make a script that will do 25000 times the same actions with 25000 times the same reliability.
+
+
+install_system.sh allows to install my debian setup faster
