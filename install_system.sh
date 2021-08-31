@@ -14,13 +14,33 @@
 script_name=$0
 script_full_path=$(dirname "$0")
 
-
-
-update_system (){
-    read -p "Do you wish to update system?(y/n)" yn
+install_ohmyzsh (){
+    read -p "Do you wish to install ohmyzsh?(y/n)" yn
     case $yn in
-        [Yy]*) echo "update system proccessing"
-        apt-get dist-upgrade -y
+        [Yy]*) echo "Install ohmyzsh proccessing"
+        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        ;;
+        *) echo "Please answer yes(y) or no(other^^).";;
+    esac
+}
+install_zsh (){
+    read -p "Do you wish to install zsh?(y/n)" yn
+    case $yn in
+        [Yy]*) echo "Install zsh proccessing"
+        apt install zsh zplug
+        chsh -s /bin/zsh
+        ;;
+        *) echo "Please answer yes(y) or no(other^^).";;
+    esac
+}
+install_dockercompose (){
+    read -p "Do you wish to install/Update Docker compose?(y/n)" yn
+    case $yn in
+        [Yy]*)
+        echo "Docker compose Copy file to usr/bin"
+        rm /usr/local/bin/docker-compose
+        curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+        chmod +x /usr/local/bin/docker-compose
         ;;
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
@@ -34,6 +54,7 @@ install_git (){
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
 }
+
 install_docker (){
     read -p "Do you wish to install/Update Docker?(y/n)" yn
     case $yn in
@@ -62,37 +83,16 @@ install_docker (){
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
 }
-install_dockercompose (){
-    read -p "Do you wish to install/Update Docker compose?(y/n)" yn
+update_system (){
+    read -p "Do you wish to update system?(y/n)" yn
     case $yn in
-        [Yy]*)
-        echo "Docker compose Copy file to usr/bin"
-        rm /usr/local/bin/docker-compose
-        curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
-        chmod +x /usr/local/bin/docker-compose
+        [Yy]*) echo "update system proccessing"
+        apt-get dist-upgrade -y
         ;;
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
 }
-install_zsh (){
-    read -p "Do you wish to install zsh?(y/n)" yn
-    case $yn in
-        [Yy]*) echo "Install zsh proccessing"
-        apt install zsh zplug
-        chsh -s /bin/zsh
-        ;;
-        *) echo "Please answer yes(y) or no(other^^).";;
-    esac
-}
-install_ohmyzsh (){
-    read -p "Do you wish to install ohmyzsh?(y/n)" yn
-    case $yn in
-        [Yy]*) echo "Install ohmyzsh proccessing"
-        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-        ;;
-        *) echo "Please answer yes(y) or no(other^^).";;
-    esac
-}
+
 
 
 echo "mise a jours de la liste des packages"
