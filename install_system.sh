@@ -23,6 +23,9 @@ install_git()
 
 install_docker()
 
+install_zsh()
+install_ohmyzsh ()
+
 exit 0
 
 update_system (){
@@ -88,4 +91,24 @@ install_dockercompose (){
     esac
 }
 
+install_zsh (){
+    read -p "Do you wish to install zsh?(y/n)" yn
+    case $yn in
+        [Yy]*) echo "Install zsh proccessing"
+        apt install zsh zplug
+        chsh -s /bin/zsh
+        ;;
+        *) echo "Please answer yes(y) or no(other^^).";;
+    esac
+}
+
+install_ohmyzsh (){
+    read -p "Do you wish to install ohmyzsh?(y/n)" yn
+    case $yn in
+        [Yy]*) echo "Install ohmyzsh proccessing"
+        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        ;;
+        *) echo "Please answer yes(y) or no(other^^).";;
+    esac
+}
 
