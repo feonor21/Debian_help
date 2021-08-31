@@ -14,19 +14,7 @@
 script_name=$0
 script_full_path=$(dirname "$0")
 
-echo "mise a jours de la liste des packages"
-apt-get update 
 
-update_system()
-install_git()
-
-
-install_docker()
-
-install_zsh()
-install_ohmyzsh ()
-
-exit 0
 
 update_system (){
     read -p "Do you wish to update system?(y/n)" yn
@@ -37,7 +25,6 @@ update_system (){
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
 }
-
 install_git (){
     read -p "Do you wish to install GIT?(y/n)" yn
     case $yn in
@@ -47,8 +34,6 @@ install_git (){
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
 }
-
-
 install_docker (){
     read -p "Do you wish to install/Update Docker?(y/n)" yn
     case $yn in
@@ -90,7 +75,6 @@ install_dockercompose (){
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
 }
-
 install_zsh (){
     read -p "Do you wish to install zsh?(y/n)" yn
     case $yn in
@@ -101,7 +85,6 @@ install_zsh (){
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
 }
-
 install_ohmyzsh (){
     read -p "Do you wish to install ohmyzsh?(y/n)" yn
     case $yn in
@@ -112,3 +95,17 @@ install_ohmyzsh (){
     esac
 }
 
+
+echo "mise a jours de la liste des packages"
+apt-get update 
+
+update_system()
+install_git()
+
+
+install_docker()
+
+install_zsh()
+install_ohmyzsh ()
+
+exit 0
