@@ -62,7 +62,7 @@ install_docker (){
 
 
         apt-cache madison docker-ce
-        read -p "Choose Your Version(second column)" $version
+        read -p "Choose Your Version(second column)" version
         apt-get -y install docker-ce=$version docker-ce-cli=$version containerd.io
         
         install_dockercompose
