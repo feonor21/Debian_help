@@ -92,14 +92,14 @@ update_system (){
 echo "mise a jours de la liste des packages"
 apt-get update 
 
-update_system()
-install_git()
+update_system
+install_git
 
 
-install_docker()
-install_dockercompose()
+install_docker
+install_dockercompose
 
-install_zsh()
-install_ohmyzsh ()
+install_zsh
+install_ohmyzsh
 
 exit 0
