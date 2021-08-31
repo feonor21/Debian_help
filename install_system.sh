@@ -63,7 +63,7 @@ install_docker (){
 
         apt-cache madison docker-ce
         read -p "Choose Your Version(second column)" $version
-        apt-get install docker-ce=$version docker-ce-cli=$version containerd.io
+        `apt-get install docker-ce=$version docker-ce-cli=$version containerd.io`
         ;;
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
