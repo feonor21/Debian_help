@@ -13,6 +13,7 @@
 
 install_ohmyzsh (){
     read -p "Do you wish to install ohmyzsh?(y/n)" yn
+    ${yn:=Y}
     case $yn in
         [Yy]*) echo "Install ohmyzsh proccessing"
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -20,18 +21,10 @@ install_ohmyzsh (){
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
 }
-install_zsh (){
-    read -p "Do you wish to install zsh?(y/n)" yn
-    case $yn in
-        [Yy]*) echo "Install zsh proccessing"
-        apt -y install zsh zplug
-        chsh -s /bin/zsh
-        ;;
-        *) echo "Please answer yes(y) or no(other^^).";;
-    esac
-}
+
 install_dockercompose (){
     read -p "Do you wish to install/Update Docker compose?(y/n)" yn
+    ${yn:=Y}
     case $yn in
         [Yy]*)
         echo "Docker compose Copy file to usr/bin"
@@ -44,6 +37,7 @@ install_dockercompose (){
 }
 install_docker (){
     read -p "Do you wish to install/Update Docker?(y/n)" yn
+    ${yn:=Y}
     case $yn in
         [Yy]*)
         echo "Uninstall old versions of Docker"
@@ -72,6 +66,7 @@ install_docker (){
 }
 install_git (){
     read -p "Do you wish to install GIT?(y/n)" yn
+    ${yn:=Y}
     case $yn in
         [Yy]*) echo "install of GIT proccessing"
         apt-get install git -y
@@ -81,6 +76,7 @@ install_git (){
 }
 update_system (){
     read -p "Do you wish to update system?(y/n)" yn
+    ${yn:=Y}
     case $yn in
         [Yy]*) echo "update system proccessing"
         apt-get dist-upgrade -y
@@ -100,7 +96,6 @@ install_git
 
 install_docker
 
-install_zsh
 install_ohmyzsh
 
 exit 0
