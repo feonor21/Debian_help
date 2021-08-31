@@ -18,7 +18,11 @@ echo "mise a jours de la liste des packages"
 apt-get update 
 
 update_system()
-Install_git()
+install_git()
+
+
+install_docker()
+
 exit 0
 
 update_system (){
@@ -31,11 +35,40 @@ update_system (){
     esac
 }
 
-Install_git (){
+install_git (){
     read -p "Do you wish to install GIT?(y/n)" yn
     case $yn in
         [Yy]*) echo "install of GIT proccessing"
         apt-get install git -y
+        ;;
+        *) echo "Please answer yes(y) or no(other^^).";;
+    esac
+}
+
+
+install_docker (){
+    read -p "Do you wish to install/Update Docker?(y/n)" yn
+    case $yn in
+        [Yy]*)
+        echo "Uninstall old versions of Docker"
+        apt-get remove docker docker-engine docker.io containerd runc
+
+        echo "Set up the repository"
+        apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+        curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | \
+            tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+
+        echo "Install Docker Engine"
+        apt-get update
+        apt-get install docker-ce docker-ce-cli containerd.io
+
+
+        apt-cache madison docker-ce
+        read -p "Choose Your Version(second column)" yn
+        apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
+
         ;;
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
