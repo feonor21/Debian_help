@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xv
 ### BEGIN INIT INFO
 # Provides:           install_system.sh
 # Required-Start:     $syslog $remote_fs
