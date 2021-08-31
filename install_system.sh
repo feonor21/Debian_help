@@ -11,9 +11,6 @@
 # Description:
 ### END INIT INFO
 
-script_name=$0
-script_full_path=$(dirname "$0")
-
 install_ohmyzsh (){
     read -p "Do you wish to install ohmyzsh?(y/n)" yn
     case $yn in
@@ -45,16 +42,6 @@ install_dockercompose (){
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
 }
-install_git (){
-    read -p "Do you wish to install GIT?(y/n)" yn
-    case $yn in
-        [Yy]*) echo "install of GIT proccessing"
-        apt-get install git -y
-        ;;
-        *) echo "Please answer yes(y) or no(other^^).";;
-    esac
-}
-
 install_docker (){
     read -p "Do you wish to install/Update Docker?(y/n)" yn
     case $yn in
@@ -79,6 +66,15 @@ install_docker (){
         apt-get install docker-ce=$version docker-ce-cli=$version containerd.io
 
         install_dockercompose()
+        ;;
+        *) echo "Please answer yes(y) or no(other^^).";;
+    esac
+}
+install_git (){
+    read -p "Do you wish to install GIT?(y/n)" yn
+    case $yn in
+        [Yy]*) echo "install of GIT proccessing"
+        apt-get install git -y
         ;;
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
