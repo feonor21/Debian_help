@@ -12,10 +12,11 @@
 ### END INIT INFO
 
 install_ohmyzsh (){
-    read -p "Do you wish to install ohmyzsh?(y/n)" yn
+    read -p "Do you wish to install ohmyzsh?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*) echo "Install ohmyzsh proccessing"
+        apt -y install zsh zplug
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
         ;;
         *) echo "Please answer yes(y) or no(other^^).";;
@@ -23,7 +24,7 @@ install_ohmyzsh (){
 }
 
 install_dockercompose (){
-    read -p "Do you wish to install/Update Docker compose?(y/n)" yn
+    read -p "Do you wish to install/Update Docker compose?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*)
@@ -36,7 +37,7 @@ install_dockercompose (){
     esac
 }
 install_docker (){
-    read -p "Do you wish to install/Update Docker?(y/n)" yn
+    read -p "Do you wish to install/Update Docker?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*)
@@ -65,7 +66,7 @@ install_docker (){
     esac
 }
 install_git (){
-    read -p "Do you wish to install GIT?(y/n)" yn
+    read -p "Do you wish to install GIT?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*) echo "install of GIT proccessing"
@@ -75,7 +76,7 @@ install_git (){
     esac
 }
 update_system (){
-    read -p "Do you wish to update system?(y/n)" yn
+    read -p "Do you wish to update system?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*) echo "update system proccessing"
@@ -96,6 +97,7 @@ install_git
 
 install_docker
 
+install_zsh
 install_ohmyzsh
 
 exit 0
