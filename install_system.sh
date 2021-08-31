@@ -69,10 +69,23 @@ install_docker (){
         read -p "Choose Your Version(second column)" yn
         apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
 
+        install_dockercompose()
+
         ;;
         *) echo "Please answer yes(y) or no(other^^).";;
     esac
 }
-
+install_dockercompose (){
+    read -p "Do you wish to install/Update Docker compose?(y/n)" yn
+    case $yn in
+        [Yy]*)
+        echo "Docker compose Copy file to usr/bin"
+        rm /usr/local/bin/docker-compose
+        curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+        chmod +x /usr/local/bin/docker-compose
+        ;;
+        *) echo "Please answer yes(y) or no(other^^).";;
+    esac
+}
 
 
