@@ -88,7 +88,7 @@ update_system (){
 
 
 
-echo "mise a jours de la liste des packages"
+echo "Update of all package list"
 apt-get update 
 
 update_system
