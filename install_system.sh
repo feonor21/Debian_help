@@ -12,19 +12,19 @@
 ### END INIT INFO
 
 install_ohmyzsh (){
-    read -p "Do you wish to install ohmyzsh?(y(default)/n)" yn
+    read -p -t 5 "Do you wish to install ohmyzsh?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*) echo "Install ohmyzsh proccessing"
         apt -y install zsh zplug
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
         ;;
-        *) echo "Please answer yes(y) or no(other^^).";;
+        *);;
     esac
 }
 
 install_dockercompose (){
-    read -p "Do you wish to install/Update Docker compose?(y(default)/n)" yn
+    read -p -t 5 "Do you wish to install/Update Docker compose?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*)
@@ -33,11 +33,11 @@ install_dockercompose (){
         curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
         chmod +x /usr/local/bin/docker-compose
         ;;
-        *) echo "Please answer yes(y) or no(other^^).";;
+        *);;
     esac
 }
 install_docker (){
-    read -p "Do you wish to install/Update Docker?(y(default)/n)" yn
+    read -p -t 5 "Do you wish to install/Update Docker?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*)
@@ -62,27 +62,27 @@ install_docker (){
         
         install_dockercompose
         ;;
-        *) echo "Please answer yes(y) or no(other^^).";;
+        *);;
     esac
 }
 install_git (){
-    read -p "Do you wish to install GIT?(y(default)/n)" yn
+    read -p -t 5 "Do you wish to install GIT?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*) echo "install of GIT proccessing"
         apt-get install git -y
         ;;
-        *) echo "Please answer yes(y) or no(other^^).";;
+        *);;
     esac
 }
 update_system (){
-    read -p "Do you wish to update system?(y(default)/n)" yn
+    read -p -t 5 "Do you wish to update system?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*) echo "update system proccessing"
         apt-get dist-upgrade -y
         ;;
-        *) echo "Please answer yes(y) or no(other^^).";;
+        *);;
     esac
 }
 
