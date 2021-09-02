@@ -12,7 +12,7 @@
 ### END INIT INFO
 
 install_ohmyzsh (){
-    read -p -t 5 "Do you wish to install ohmyzsh?(y(default)/n)" yn
+    read -t 5 -p "Do you wish to install ohmyzsh?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*) echo "Install ohmyzsh proccessing"
@@ -24,7 +24,7 @@ install_ohmyzsh (){
 }
 
 install_dockercompose (){
-    read -p -t 5 "Do you wish to install/Update Docker compose?(y(default)/n)" yn
+    read -t 5 -p "Do you wish to install/Update Docker compose?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*)
@@ -37,7 +37,7 @@ install_dockercompose (){
     esac
 }
 install_docker (){
-    read -p -t 5 "Do you wish to install/Update Docker?(y(default)/n)" yn
+    read -t 5 -p "Do you wish to install/Update Docker?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*)
@@ -66,7 +66,7 @@ install_docker (){
     esac
 }
 install_git (){
-    read -p -t 5 "Do you wish to install GIT?(y(default)/n)" yn
+    read -t 5 -p "Do you wish to install GIT?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*) echo "install of GIT proccessing"
@@ -76,7 +76,7 @@ install_git (){
     esac
 }
 update_system (){
-    read -p -t 5 "Do you wish to update system?(y(default)/n)" yn
+    read -t 5 -p "Do you wish to update system?(y(default)/n)" yn
     ${yn:=Y}
     case $yn in
         [Yy]*) echo "update system proccessing"
