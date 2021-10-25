@@ -92,7 +92,6 @@ install_git
 
 install_docker
 
-install_zsh
 install_ohmyzsh
 
 exit 0
