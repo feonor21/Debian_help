@@ -12,7 +12,7 @@
 ### END INIT INFO
 
 install_ohmyzsh (){
-    read -t 5 -p "Do you wish to install ohmyzsh?(y(default)/n)" -e -i 'Y' yn || yn=Y
+    read -t 30 -p "Do you wish to install ohmyzsh?(y(default)/n)" -e -i 'n' yn || yn=Y
     case $yn in
         [Yy]*) echo "Install ohmyzsh proccessing"
         apt -y install zsh zplug
@@ -23,19 +23,19 @@ install_ohmyzsh (){
 }
 
 install_dockercompose (){
-    read -t 5 -p "Do you wish to install/Update Docker compose?(y(default)/n)" -e -i 'Y' yn || yn=Y
+    read -t 30 -p "Do you wish to install/Update Docker compose?(y(default)/n)" -e -i 'Y' yn || yn=Y
     case $yn in
         [Yy]*)
         echo "Docker compose Copy file to usr/bin"
         rm /usr/local/bin/docker-compose
-        curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+        curl -L "https://github.com/docker/compose/releases/download/2.16.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
         chmod +x /usr/local/bin/docker-compose
         ;;
         *);;
     esac
 }
 install_docker (){
-    read -t 5 -p "Do you wish to install/Update Docker?(y(default)/n)" -e -i 'Y' yn || yn=Y
+    read -t 30 -p "Do you wish to install/Update Docker?(y(default)/n)" -e -i 'Y' yn || yn=Y
     case $yn in
         [Yy]*)
         echo "Uninstall old versions of Docker"
@@ -51,7 +51,7 @@ install_docker (){
     esac
 }
 install_git (){
-    read -t 5 -p "Do you wish to install GIT?(y(default)/n)" -e -i 'Y' yn || yn=Y
+    read -t 30 -p "Do you wish to install GIT?(y(default)/n)" -e -i 'Y' yn || yn=Y
     case $yn in
         [Yy]*) echo "install of GIT proccessing"
         apt-get install git -y
@@ -60,7 +60,7 @@ install_git (){
     esac
 }
 update_system (){
-    read -t 5 -p "Do you wish to update system?(y(default)/n)" -e -i 'Y' yn || yn=Y
+    read -t 30 -p "Do you wish to update system?(y(default)/n)" -e -i 'Y' yn || yn=Y
     case $yn in
         [Yy]*) echo "update system proccessing"
         apt-get dist-upgrade -y
