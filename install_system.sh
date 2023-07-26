@@ -42,7 +42,7 @@ install_docker (){
         apt-get -y remove docker-ce docker-ce-cli containerd.io
         
         echo "Install Prerequisites"
-        apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+        apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
 
         echo "Add Docker’s GPG Repo Key"
         curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -52,7 +52,7 @@ install_docker (){
 
         echo "Install Docker Engine"
         apt-get update
-        apt-get install docker-ce docker-ce-cli containerd.io
+        apt-get -y install docker-ce docker-ce-cli containerd.io
         docker run hello-world
         
         install_dockercompose
